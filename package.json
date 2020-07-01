@@ -1,0 +1,10 @@
+{
+    "name": "cineman",
+    "version": "0.1",
+    "description": "Allows users to queue movies from IMDB.",
+    "main": "bot.js",
+    "author": "Appendices",
+    "dependencies": {
+        "tinyreq": "^3.4.1"
+    }
+}
