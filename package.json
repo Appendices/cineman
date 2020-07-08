@@ -5,6 +5,7 @@
     "main": "bot.js",
     "author": "Appendices",
     "dependencies": {
+        "discord.js": "^12.2.0",
         "tinyreq": "^3.4.1"
     }
 }

@@ -11,7 +11,7 @@ module.exports = {
         }
         url += "&apikey=" + apikey;
         url = encodeURI(url);
-        console.log(url);
+        //console.log(url);
         return new Promise((resolve, reject) => {
             request(url, (err, body) => {
                 if(err) return reject(err);
