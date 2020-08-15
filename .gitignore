@@ -1,8 +1,4 @@
-*
-!.gitignore
-!*.md
-!*.json
-auth.json
 *lock*
-!*.js
-!*.png
+node_modules
+auth.json
+*test*
