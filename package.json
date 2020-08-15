@@ -1,11 +1,27 @@
 {
-    "name": "cineman",
-    "version": "0.1",
-    "description": "Allows users to queue movies from IMDB.",
-    "main": "bot.js",
-    "author": "Appendices",
-    "dependencies": {
-        "discord.js": "^12.2.0",
-        "tinyreq": "^3.4.1"
-    }
+  "name": "cineman",
+  "version": "0.2",
+  "description": "Discord bot that allows users to search for movies, add them to a queue, and vote on their favorites.",
+  "main": "src/bot.js",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "mysql": "^2.18.1",
+    "omdbapi": "^3.0.0",
+    "tinyreq": "^3.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Appendices/cineman.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Appendices/cineman/issues"
+  },
+  "homepage": "https://github.com/Appendices/cineman#readme"
 }
