@@ -1,6 +1,6 @@
 {
   "name": "cineman",
-  "version": "0.2",
+  "version": "0.2.0",
   "description": "Discord bot that allows users to search for movies, add them to a queue, and vote on their favorites.",
   "main": "src/bot.js",
   "dependencies": {

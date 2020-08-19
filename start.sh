@@ -7,7 +7,7 @@ if ! [ -f "$AUTH" ]; then
     read omdb
     echo 'Discord bot key:'
     read discord
-    printf '{\n  "omdb":"'$omdb'",\n  "discord":"'$discord'"\n}' > ./conf/auth.json
+    printf '{\n  "omdb":"'$omdb'",\n  "discord":"'$discord'"\n}' > ./auth.json
 fi
 
 # Checks architecture before starting Docker
@@ -17,8 +17,8 @@ if [[ "$ARCH" == "x86"* ]]; then
 elif [[ "$ARCH" == "arm"* ]]; then
     docker-compose -f docker-compose-arm.yml up -d
 else
-    echo 'Unsupported architecture.'
-    exit 1
+    echo 'Unspecified architecture. Defaulting to x86'
+    docker-compose up -d
 fi
 
 # Runs bot
