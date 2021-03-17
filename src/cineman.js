@@ -33,10 +33,24 @@ function search(tag, apikey){
     });
 }
 
+function printPoll(suggestions){
+    var count = 0;
+    var output = '';
+    for(const suggestion of suggestions){
+        //console.log(suggestion);
+        count++;
+        output += ':regional_indicator_' + String.fromCharCode(96 + count) + ': : ' + suggestion[0].content + '\n';
+    }
+    return output;
+}
+
 module.exports = {
     queue: function(tag, apikey){
         //check database
         return search(tag, apikey);
         //return 'https://imdb.com/title/' + movies_list[tag - 1].imdbID;
+    },
+    printPoll: function(suggestions){
+        return printPoll(suggestions);
     }
 }

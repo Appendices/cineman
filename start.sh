@@ -1,13 +1,17 @@
 #!/bin/bash
 
-# Fills auth.json
-AUTH=auth.json
-if ! [ -f "$AUTH" ]; then
+# Fills config.json
+CONFIG=config.json
+if ! [ -f "$CONFIG" ]; then
     echo 'OMDb API key:'
     read omdb
     echo 'Discord bot key:'
-    read discord
-    printf '{\n  "omdb":"'$omdb'",\n  "discord":"'$discord'"\n}' > ./auth.json
+    read bot_key
+    echo 'Discord bot ID:'
+    read bot_id
+    echo 'Discord admin ID (empty for all access):'
+    read admin_id
+    printf '{\n  "omdb":"'$omdb'",\n  "bot_key":"'$bot_key'"\n  "bot_id":"'$bot_id'"\n   "admin_id":"'$admin_id'"\n}' > $CONFIG
 fi
 
 # Checks architecture before starting Docker
@@ -22,4 +26,5 @@ else
 fi
 
 # Runs bot
+npm i
 node src/bot.js
