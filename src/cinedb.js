@@ -126,11 +126,11 @@ function getMovieField(imdbID, connection, field){
 
 module.exports = {
     addMovie: function (imdbData, connection, discordID) {
+        // If the movie currently exists in the database, it updates the necessary information and sets the nominated bool to true.
+        // Otherwise it inserts the movie into the database.
+        
         if (checkForMovie(imdbData, connection) == false) {
             insertMovie(imdbData, connection, discordID);
-
-            var successful_insertion_string = "Movie added";
-            return successful_insertion_string;
         }
         else {
             // Rather than calling this same function multiple times, it would be better to make an array of desired changes,
@@ -140,5 +140,9 @@ module.exports = {
             updateMovieField(imdbData.imdbID, connection, movie_fields.RECENT_DATE, Date.now());
             updateMovieField(imdbData.imdbID, connection, movie_fields.WEIGHT, getMovieField(imdbData.imdbID, connection, movie_fields.WEIGHT) + 1);
         }
+
+        // Obviously some error checking should be done to make sure things were actually successfully added/updates
+        var successful_insertion_string = "Movie added";
+        return successful_insertion_string;
     }
 }
