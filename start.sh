@@ -11,7 +11,7 @@ if ! [ -f "$CONFIG" ]; then
     read bot_id
     echo 'Discord admin ID (empty for all access):'
     read admin_id
-    printf '{\n  "omdb":"'$omdb'",\n  "bot_key":"'$bot_key'",\n  "bot_id":"'$bot_id'",\n   "admin_id":"'$admin_id'"\n}' > $CONFIG
+    printf '{\n  "omdb":"'$omdb'",\n  "bot_key":"'$bot_key'",\n  "bot_id":"'$bot_id'",\n  "admin_id":"'$admin_id'"\n}' > $CONFIG
 fi
 
 # Checks architecture before starting Docker
