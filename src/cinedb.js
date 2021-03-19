@@ -43,7 +43,7 @@ function insertMovie(imdbData, connection, discordID) {
     connection.connect();
 
     var query_results = null;
-    let insert_string = `imdbID = ${imbdData.imdbID}, year = ${imbdData.Year}, first_sug = ${discordID}, recent_date = ${Date.now()}, weight = 1`;
+    let insert_string = `imdbID = ${imbdData.imdbID}, year = ${imbdData.Year}, first_sug = ${discordID}, recent_date = ${Date.now()}, weight = 1, nominated = 1`;
 
     connection.query(`INSERT INTO movies SET ${insert_string}`, function (error, results, fields) {
         if (error) throw error;
