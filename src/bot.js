@@ -26,7 +26,7 @@ client.on('message', message => {
                 message.channel.send(help()).catch(console.error);
                 break;
             case '~queue':
-                cineman.queue(args.slice(1).join(' '), auth.omdb)
+                cineman.queue(args.slice(1).join(' '), config.omdb)
                     .then(output => {
                         message.channel.send(output).catch(console.error);
                     })
