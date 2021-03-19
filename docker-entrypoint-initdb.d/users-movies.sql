@@ -11,6 +11,7 @@ CREATE TABLE movies (
     recent_sug  BIGINT,
     recent_date DATE        DEFAULT CURRENT_TIMESTAMP,
     `weight`    INT         DEFAULT 0,
+    nominated   TINYINT(1),
     PRIMARY KEY(imdbid)
 );
 

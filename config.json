@@ -1,9 +1,0 @@
-{
-  "omdb":"",
-  "bot_key":"",
-  "bot_id":"",
-  "admin_id":"",
-  "db_host":"localhost",
-  "db_user":"root",
-  "db_pass":"password"
-}
