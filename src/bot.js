@@ -1,6 +1,7 @@
 const discord = require('discord.js');
 const cineman = require('./cineman.js');
 const config = require('../config.json');
+const mysql = require('mysql');
 
 const client = new discord.Client();
 
@@ -9,6 +10,19 @@ function help(){
                 "**~queue** [title]\t|\tSearches OMDb for a title\n" +
                 "**~queue** [IMDb link]\t|\tQueue's a specific film from IMDb\n";
     return menu;
+}
+
+function genDBConnection(){
+
+    // Generates a connection var based of config that should be passed to MySQL functions
+    var connection = mysql.createConnection({
+        host     : config.db_host,
+        user     : config.db_user,
+        password : config.db_pass,
+        database : 'cineman'
+    });
+
+    return connection;
 }
 
 client.on('ready', () => {
