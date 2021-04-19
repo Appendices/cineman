@@ -8,8 +8,6 @@ if ! [ -f "$CONFIG" ]; then
     echo 'Discord bot key:'
     read bot_key
     echo 'Discord bot ID:'
-    read bot_id
-    echo 'Discord admin ID (empty for all access):'
     read admin_id
     printf '{\n  "omdb":"'$omdb'",\n  "bot_key":"'$bot_key'",\n  "bot_id":"'$bot_id'",\n  "admin_id":"'$admin_id'"\n}' > $CONFIG
 fi
@@ -27,4 +25,4 @@ fi
 
 # Runs bot
 npm i
-node src/bot.js
+node src/cineman.js
