@@ -4,7 +4,7 @@
   "description": "Discord bot that allows users to search for movies, add them to a queue, and vote on their favorites.",
   "main": "src/bot.js",
   "dependencies": {
-    "discord.js": "^12.3.1",
+    "discord.js": "^13.6.0",
     "mysql": "^2.18.1",
     "omdbapi": "^3.0.0",
     "tinyreq": "^3.4.2"

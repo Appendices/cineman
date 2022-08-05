@@ -1,10 +1,10 @@
-const discord = require('discord.js');
+const {Client, Intents} = require('discord.js');
 
 const config = require('../config.json');
 const omdb = require('./omdb.js');
 const cinedb = require('./cinedb.js');
 
-const client = new discord.Client();
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
 function help(){
     var menu = "**~help**\t|\tDisplays this menu\n" +
@@ -71,7 +71,7 @@ client.on('ready', () => {
     console.log('as: ' + client.user.username + ' | ' + client.user.id);
 });
 
-client.on('message', message => {
+client.on('messageCreate', message => {
     if(message.content.substring(0, 1) == '~'){
         var args = message.content.split(' ');
         switch(args[0].toLowerCase()){
@@ -79,7 +79,7 @@ client.on('message', message => {
                 message.channel.send(help()).catch(console.error);
                 break;
             case '~queue':
-                queue(args.slice(1).join(' '), config.omdb)
+                search(args.slice(1).join(' '), config.omdb)
                 .then(output => {
                     message.channel.send(output).catch(console.error);
                 })
@@ -99,16 +99,21 @@ client.on('message', message => {
                                 suggestions.set(entry[1]);
                             }
                         }
-                        message.channel.send(printPoll(suggestions))
-                            .then(poll_message => {
-                                var emoji;
-                                for(var i = 0; i < suggestions.size; i++){
-                                    emoji = 0x1F1E6 + i;
-                                    poll_message.react(String.fromCodePoint(emoji)).catch(console.error);
-                                }
-                                message.delete().catch(console.error);
-                            })
-                            .catch(console.error);
+			if(suggestions.length < 1){
+				message.channel.send("No suggestions to poll.")
+			}
+			else{
+                            message.channel.send(printPoll(suggestions))
+                                .then(poll_message => {
+                                    var emoji;
+                                    for(var i = 0; i < suggestions.size; i++){
+                                        emoji = 0x1F1E6 + i;
+                                        poll_message.react(String.fromCodePoint(emoji)).catch(console.error);
+                                    }
+                                    message.delete().catch(console.error);
+                                 })
+                                 .catch(console.error);
+			}
                     })
                     .catch(console.error);
                 }
