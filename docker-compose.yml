@@ -1,14 +1,19 @@
 version: '3.8'
 
 services:
-  db:
-    image: mariadb
-
+  node:
+    build: .
     volumes:
-      - ./docker-entrypoint-initdb.d
-
+      - ./src:/node/src
+      - ./config:/node/config
+    entrypoint: 'node /node/src/cineman.js'
+    links:
+      - "db"
+    
+  db:
+    image: mongo
     environment:
-      - MYSQL_RANDOM_ROOT_PASSWORD=yes
-      
-    ports:
-      - 3306:3306
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - ./volumes/db:/data/db

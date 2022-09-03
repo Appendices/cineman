@@ -1,8 +1,8 @@
 {
   "name": "cineman",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Discord bot that allows users to search for movies, add them to a queue, and vote on their favorites.",
-  "main": "src/bot.js",
+  "main": "../src/cineman.js",
   "dependencies": {
     "discord.js": "^13.6.0",
     "mysql": "^2.18.1",

@@ -1,6 +1,6 @@
 const {Client, Intents} = require('discord.js');
 
-const config = require('../config.json');
+const config = require('../config/config.json');
 const omdb = require('./omdb.js');
 const cinedb = require('./cinedb.js');
 
@@ -103,16 +103,16 @@ client.on('messageCreate', message => {
 				message.channel.send("No suggestions to poll.")
 			}
 			else{
-                            message.channel.send(printPoll(suggestions))
-                                .then(poll_message => {
-                                    var emoji;
-                                    for(var i = 0; i < suggestions.size; i++){
-                                        emoji = 0x1F1E6 + i;
-                                        poll_message.react(String.fromCodePoint(emoji)).catch(console.error);
-                                    }
-                                    message.delete().catch(console.error);
-                                 })
-                                 .catch(console.error);
+                message.channel.send(printPoll(suggestions))
+                    .then(poll_message => {
+                        var emoji;
+                        for(var i = 0; i < suggestions.size; i++){
+                            emoji = 0x1F1E6 + i;
+                            poll_message.react(String.fromCodePoint(emoji)).catch(console.error);
+                        }
+                        message.delete().catch(console.error);
+                        })
+                        .catch(console.error);
 			}
                     })
                     .catch(console.error);
